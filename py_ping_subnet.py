@@ -25,8 +25,10 @@ class Device():
         lock.release()
 
     def update_message(self, message):
+        lock.acquire()
         self.message = message
         self.status = self.COMPLETE
+        lock.release()
 
     def get_message(self):
         if self.status == self.COMPLETE:
